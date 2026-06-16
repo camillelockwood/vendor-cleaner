@@ -70,11 +70,16 @@ python clean_vendors.py checkbook_explorer_fy25_updated.csv --eval 50
 
 ## Results & evaluation
 
-<!-- After you run --eval and hand-check the sample, fill this in honestly: -->
+Run on the City of Boston FY25 Checkbook (117,898 rows, 7,643 unique vendor names):
+
 - Duplicate groups surfaced: **62**
-- Merges applied automatically: **___**
-- Flagged for human review: **___**
-- Accuracy on a 50-merge hand-checked sample: **__/50** _(misses were mostly ___)_
+- Merges applied automatically: **52**
+- Flagged for human review: **15**
+- Hand-checked a random 50-merge sample: **50/50 correctly identified as the
+  same vendor.** In 1 case the canonical name it chose was less complete than
+  ideal (right vendor, imperfect label).
+- Note: this sample measures *precision* on flagged candidates, not *recall* —
+  duplicates the grouping step never surfaces aren't tested here.
 
 ## Honest limitations
 
