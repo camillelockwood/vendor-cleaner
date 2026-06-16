@@ -68,6 +68,32 @@ python clean_vendors.py checkbook_explorer_fy25_updated.csv --eval 50
 - **`..._change_log.csv`** — every proposed merge with Claude's confidence,
   one-line reasoning, and whether it was applied or flagged for review
 
+## Example run
+
+```text
+$ python clean_vendors.py checkbook_explorer_fy25_updated.csv
+Loaded 117,898 rows
+7,643 unique vendor names after basic cleanup
+62 candidate duplicate groups found (only these are sent to Claude)
+Asking Claude (claude-haiku-4-5) to judge 62 groups...
+
+Done.
+  merges applied:        52
+  groups needing review: 15
+  -> checkbook_explorer_fy25_updated_cleaned.csv
+  -> checkbook_explorer_fy25_updated_change_log.csv
+```
+
+A few real merges it made on the Boston data:
+
+| Original name | Standardized to |
+|---|---|
+| `TODISCO SERVICES INC.` | `Todisco Services, Inc.` |
+| `white, kyle` | `White, Kyle` |
+| `OFF DUTY MANAGMENT` | `Off Duty Management` |
+| `Language Connections` | `Language Connections Inc.` |
+| `S G Harold Plumbing & Heating` | `S.G. Harold Plumbing & Heating` |
+
 ## Results & evaluation
 
 Run on the City of Boston FY25 Checkbook (117,898 rows, 7,643 unique vendor names):
