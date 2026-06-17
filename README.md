@@ -1,4 +1,4 @@
-# Vendor Name Cleaner
+# 🧹 Vendor Name Cleaner
 
 **A Python tool that finds and standardizes duplicate vendor names in messy
 financial spreadsheets — using rule-based logic for the easy calls and Claude
