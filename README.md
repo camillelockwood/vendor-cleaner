@@ -1,4 +1,4 @@
-# 🧹 Vendor Name Cleaner
+# Vendor Name Cleaner
 
 **A Python tool that finds and standardizes duplicate vendor names in messy
 financial spreadsheets — using rule-based logic for the easy calls and Claude
@@ -86,8 +86,8 @@ Loaded 117,898 rows
 Asking Claude (claude-haiku-4-5) to judge 62 groups...
 
 Done.
-  merges applied:        52
-  groups needing review: 15
+  merges applied:        41
+  groups needing review: 21
   -> checkbook_explorer_fy25_updated_cleaned.csv
   -> checkbook_explorer_fy25_updated_change_log.csv
 ```
