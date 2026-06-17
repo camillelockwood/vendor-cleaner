@@ -104,16 +104,25 @@ A few real merges it made on the Boston data:
 
 ## Results & evaluation
 
-Run on the City of Boston FY25 Checkbook (117,898 rows, 7,643 unique vendor names):
+Run on the City of Boston FY25 Checkbook (117,898 rows, 7,643 unique vendor
+names), with `temperature=0` so the run is reproducible:
 
 - Duplicate groups surfaced: **62**
-- Merges applied automatically: **52**
-- Flagged for human review: **15**
-- Hand-checked a random 50-merge sample: **50/50 correctly identified as the
-  same vendor.** In 1 case the canonical name it chose was less complete than
-  ideal (right vendor, imperfect label).
-- Note: this sample measures *precision* on flagged candidates, not *recall* —
-  duplicates the grouping step never surfaces aren't tested here.
+- Merges applied automatically: **41**
+- Flagged for human review: **21**
+- Hand-checked **all 41** applied merges: **41/41 correctly identified as the
+  same vendor.** In ~6 cases the canonical name it chose was a messier existing
+  variant (e.g. ALL CAPS or missing punctuation) rather than the cleanest option
+  — a deliberate tradeoff of requiring the canonical name to be one that actually
+  appears in the data, never an invented one.
+- This measures *precision* on flagged candidates, not *recall* — duplicates the
+  grouping step never surfaces aren't tested here.
+
+**What the duplicates were hiding:** because the change log totals spend per name,
+it surfaced real money fragmented across spellings — one variant of "YMCA of
+Greater Boston" alone carried ~$4.7M, a "Boston Chinatown Neighborhood Center"
+variant ~$1.8M, and "Aramsco" ~$1.24M — all disconnected from the main vendor
+record until merged.
 
 ## Honest limitations
 

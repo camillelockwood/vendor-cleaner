@@ -1,125 +1,125 @@
-original_name,canonical_name,same_entity,confidence,applied,needs_review,reasoning
-A.M. Leonard Inc.,"A.M. Leonard, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"A.M. Leonard, Inc.","A.M. Leonard, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-Action Apparel Inc,"Action Apparel, LLC",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Action Apparel, LLC","Action Apparel, LLC",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Algonquin Acquisition Co, LLC",Algonquin Acquisition Company LLC,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Algonquin Acquisition Company LLC,Algonquin Acquisition Company LLC,True,low,False,True,rule-based grouping only (no LLM); needs human review
-"American Service Co., Inc","American Service Company, LLC",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"American Service Company, LLC","American Service Company, LLC",True,low,False,True,rule-based grouping only (no LLM); needs human review
-Aramsco Inc,"Aramsco, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Aramsco, Inc.","Aramsco, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-Arielle Enterprise,Arielle Enterprise LLC,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Arielle Enterprise LLC,Arielle Enterprise LLC,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Artisan's Asylum,Artisan's Asylum Inc.,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Artisan's Asylum Inc.,Artisan's Asylum Inc.,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Arts for Learning Massachusetts,"Arts for Learning Massachusetts, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Arts for Learning Massachusetts, Inc.","Arts for Learning Massachusetts, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Banton, Diane","Banton, Diane",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"bANTON, Diane","Banton, Diane",True,low,False,True,rule-based grouping only (no LLM); needs human review
-Bernard Raymond,"Bernard, Raymond",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Bernard, Raymond","Bernard, Raymond",True,low,False,True,rule-based grouping only (no LLM); needs human review
-Boston Chinatown Neighborhood Center,Boston Chinatown Neighborhood Center Inc,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Boston Chinatown Neighborhood Center Inc,Boston Chinatown Neighborhood Center Inc,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Brand Company,"Brand Company, Inc",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Brand Company, Inc","Brand Company, Inc",True,low,False,True,rule-based grouping only (no LLM); needs human review
-CAFE JUICEUP,CAFE JUICEUP,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Cafe Juiceup,CAFE JUICEUP,True,low,False,True,rule-based grouping only (no LLM); needs human review
-CDW Government LLC,"CDW Government, Inc",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"CDW Government, Inc","CDW Government, Inc",True,low,False,True,rule-based grouping only (no LLM); needs human review
-Chica Project,Chica Project,True,low,False,True,rule-based grouping only (no LLM); needs human review
-chica project,Chica Project,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Chinatown Main Street,"Chinatown Main Street, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Chinatown Main Street, Inc.","Chinatown Main Street, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-Dodge Grain Co. Inc.,Dodge Grain Co. Inc.,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Dodge Grain LLC,Dodge Grain Co. Inc.,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Flynt Nicole N,"Flynt, Nicole N",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Flynt, Nicole N","Flynt, Nicole N",True,low,False,True,rule-based grouping only (no LLM); needs human review
-Friends of Memorial Hall,"Friends of Memorial Hall, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Friends of Memorial Hall, Inc.","Friends of Memorial Hall, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-Imagine Learning LLC,"Imagine Learning, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Imagine Learning, Inc.","Imagine Learning, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-James G Grant Co inc,James G. Grant Co. Inc.,True,low,False,True,rule-based grouping only (no LLM); needs human review
-James G. Grant Co. Inc.,James G. Grant Co. Inc.,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Joachim Maxime,"Joachim, Maxime",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Joachim, Maxime","Joachim, Maxime",True,low,False,True,rule-based grouping only (no LLM); needs human review
-Language Connections,Language Connections Inc,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Language Connections Inc,Language Connections Inc,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Lozada Jennifer Y,"Lozada, Jennifer Y",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Lozada, Jennifer Y","Lozada, Jennifer Y",True,low,False,True,rule-based grouping only (no LLM); needs human review
-Massachusetts Reading Association,Massachusetts Reading Association Inc,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Massachusetts Reading Association Inc,Massachusetts Reading Association Inc,True,low,False,True,rule-based grouping only (no LLM); needs human review
-NSTAR Electric & Gas,NSTAR Electric & Gas,True,low,False,True,rule-based grouping only (no LLM); needs human review
-NSTAR Electric Gas,NSTAR Electric & Gas,True,low,False,True,rule-based grouping only (no LLM); needs human review
-PIXWORX LLC,PIXWORX LLC,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Pixworx LLC,PIXWORX LLC,True,low,False,True,rule-based grouping only (no LLM); needs human review
-PUTINWORK,Putinwork LLC,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Putinwork LLC,Putinwork LLC,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Performance Plumbing & Heating Inc,Performance Plumbing & Heating Inc.,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Performance Plumbing & Heating Inc.,Performance Plumbing & Heating Inc.,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Peterson Charles T,"Peterson, Charles T",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Peterson, Charles T","Peterson, Charles T",True,low,False,True,rule-based grouping only (no LLM); needs human review
-Plaza Deli,Plaza Deli Inc.,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Plaza Deli Inc.,Plaza Deli Inc.,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Rapport International,"Rapport International, LLC",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Rapport International, LLC","Rapport International, LLC",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Renaissance Learning Inc, ","Renaissance Learning Inc, ",True,low,False,True,rule-based grouping only (no LLM); needs human review
-Renaissance Learning Inc.,"Renaissance Learning Inc, ",True,low,False,True,rule-based grouping only (no LLM); needs human review
-SASAKI Associates Inc.,SASAKI Associates Inc.,True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Sasaki Associates, PC",SASAKI Associates Inc.,True,low,False,True,rule-based grouping only (no LLM); needs human review
-SCHOOL SPECIALTY LLC,"School Specialty, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"School Specialty, Inc.","School Specialty, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-SIDE Presents,"SIDE, Presents",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"SIDE, Presents","SIDE, Presents",True,low,False,True,rule-based grouping only (no LLM); needs human review
-Security Information Systems Inc.,Security Information Systems Inc.,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Security Information Systems LLC,Security Information Systems Inc.,True,low,False,True,rule-based grouping only (no LLM); needs human review
-SmartPass Inc,"SmartPass, LLC",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"SmartPass, LLC","SmartPass, LLC",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Soliant Health, Inc.","Soliant Health, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Soliant Health, LLC","Soliant Health, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-Suya Joint Inc,Suya Joint Inc,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Suya Joint LLC,Suya Joint Inc,True,low,False,True,rule-based grouping only (no LLM); needs human review
-TODISCO SERVICES INC.,TODISCO SERVICES INC.,True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Todisco Services, Inc",TODISCO SERVICES INC.,True,low,False,True,rule-based grouping only (no LLM); needs human review
-The Warren Group Inc,The Warren Group Inc,True,low,False,True,rule-based grouping only (no LLM); needs human review
-The Warren Group LLC,The Warren Group Inc,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Turf Products,Turf Products LLC,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Turf Products LLC,Turf Products LLC,True,low,False,True,rule-based grouping only (no LLM); needs human review
-United Construction & Forestry,United Construction & Forestry LLC,True,low,False,True,rule-based grouping only (no LLM); needs human review
-United Construction & Forestry LLC,United Construction & Forestry LLC,True,low,False,True,rule-based grouping only (no LLM); needs human review
-United Rentals,"United Rentals, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"United Rentals, Inc.","United Rentals, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-Urciuoli Dolores L,"Urciuoli, Dolores L",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Urciuoli, Dolores L","Urciuoli, Dolores L",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Victor Stanley, Inc.","Victor Stanley, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Victor Stanley, LLC","Victor Stanley, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-Voehl Kristen,"Voehl, Kristen",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Voehl, Kristen","Voehl, Kristen",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"White, Kyle","White, Kyle",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"white, kyle","White, Kyle",True,low,False,True,rule-based grouping only (no LLM); needs human review
-YMCA Of Greater Boston,YMCA Of Greater Boston,True,low,False,True,rule-based grouping only (no LLM); needs human review
-YMCA of Greater Boston,YMCA Of Greater Boston,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Zones LLC,"Zones, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Zones, Inc.","Zones, Inc.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-Archipelago Strategies Group Inc,"Archipelago Strategies Group, LLC (ASG)",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Archipelago Strategies Group, LLC (ASG)","Archipelago Strategies Group, LLC (ASG)",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Ferreira, Alison","Ferreira, Alison",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"ferreira, ailson","Ferreira, Alison",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Intra Systems, LLC","Intra Systems, LLC",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"IntraSystems, Inc.","Intra Systems, LLC",True,low,False,True,rule-based grouping only (no LLM); needs human review
-John F. Kennedy Family Service Center,"John F. Kennedy Family Srvs. Center, Inc",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"John F. Kennedy Family Srvs. Center, Inc","John F. Kennedy Family Srvs. Center, Inc",True,low,False,True,rule-based grouping only (no LLM); needs human review
-National Community Development Assoc,National Community Development Associati,True,low,False,True,rule-based grouping only (no LLM); needs human review
-National Community Development Associati,National Community Development Associati,True,low,False,True,rule-based grouping only (no LLM); needs human review
-OFF DUTY MANAGMENT,Off Duty Management,True,low,False,True,rule-based grouping only (no LLM); needs human review
-Off Duty Management,Off Duty Management,True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Panteja, Goria J.","Panteja, Goria J.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Pantoja, Goria J.","Panteja, Goria J.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-S G Harold Plumbing & Heating,"S.G. Harold Plumbing, Heating & AC, LLC",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"S.G. Harold Plumbing, Heating & AC, LLC","S.G. Harold Plumbing, Heating & AC, LLC",True,low,False,True,rule-based grouping only (no LLM); needs human review
-Standard Electric (a Division of USESI),Standard Electric (a Division of USESI),True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Standard Electric, (a Div. of USESI)",Standard Electric (a Division of USESI),True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Tremblay, Gregory","Tremblay, Gregory F.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Tremblay, Gregory F.","Tremblay, Gregory F.",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Williams, James","Williams, James",True,low,False,True,rule-based grouping only (no LLM); needs human review
-"Williams, Jamie","Williams, James",True,low,False,True,rule-based grouping only (no LLM); needs human review
+original_name,canonical_name,same_entity,confidence,vendor_total_spend,applied,needs_review,reasoning
+A.M. Leonard Inc.,A.M. Leonard Inc.,True,high,1485.7,False,False,"Identical company name, only punctuation difference (comma placement before Inc.)"
+"A.M. Leonard, Inc.",A.M. Leonard Inc.,True,high,3103.76,True,False,"Identical company name, only punctuation difference (comma placement before Inc.)"
+Action Apparel Inc,Action Apparel Inc,False,high,14493.09,False,True,Different legal entity types (Inc vs LLC) suggest different registrations; could be restructuring but conservative approach requires treating as different
+"Action Apparel, LLC",Action Apparel Inc,False,high,79305.25,False,True,Different legal entity types (Inc vs LLC) suggest different registrations; could be restructuring but conservative approach requires treating as different
+"Algonquin Acquisition Co, LLC","Algonquin Acquisition Co, LLC",True,high,90705.36,False,False,"Same company with abbreviated 'Co' vs full 'Company'; both LLC, minor abbreviation difference"
+Algonquin Acquisition Company LLC,"Algonquin Acquisition Co, LLC",True,high,561.02,True,False,"Same company with abbreviated 'Co' vs full 'Company'; both LLC, minor abbreviation difference"
+"American Service Co., Inc","American Service Co., Inc",False,high,770.0,False,True,Different legal entity types (Inc vs LLC) indicate separate registrations
+"American Service Company, LLC","American Service Co., Inc",False,high,145005.92,False,True,Different legal entity types (Inc vs LLC) indicate separate registrations
+Aramsco Inc,Aramsco Inc,True,high,355.22,False,False,"Identical company name, only punctuation difference (period after Inc)"
+"Aramsco, Inc.",Aramsco Inc,True,high,1235497.54,True,False,"Identical company name, only punctuation difference (period after Inc)"
+Arielle Enterprise,Arielle Enterprise,True,medium,32760.0,False,False,Same company name; LLC designation may have been added later or omitted in one record
+Arielle Enterprise LLC,Arielle Enterprise,True,medium,17600.0,True,False,Same company name; LLC designation may have been added later or omitted in one record
+Artisan's Asylum,Artisan's Asylum,True,medium,22500.0,False,False,Same company name; Inc. designation may reflect formal incorporation of same entity
+Artisan's Asylum Inc.,Artisan's Asylum,True,medium,675.0,True,False,Same company name; Inc. designation may reflect formal incorporation of same entity
+Arts for Learning Massachusetts,Arts for Learning Massachusetts,True,high,2495.0,False,False,"Identical company name, only punctuation and Inc. designation difference"
+"Arts for Learning Massachusetts, Inc.",Arts for Learning Massachusetts,True,high,5000.0,True,False,"Identical company name, only punctuation and Inc. designation difference"
+"Banton, Diane","Banton, Diane",True,high,585.0,False,False,"Same individual name, only casing difference"
+"bANTON, Diane","Banton, Diane",True,high,204.0,True,False,"Same individual name, only casing difference"
+Bernard Raymond,Bernard Raymond,False,medium,1855.0,False,True,Ambiguous: could be same person with different name formatting (first/last vs last/first) or two different people; conservative approach treats as different
+"Bernard, Raymond",Bernard Raymond,False,medium,2515.0,False,True,Ambiguous: could be same person with different name formatting (first/last vs last/first) or two different people; conservative approach treats as different
+Boston Chinatown Neighborhood Center,Boston Chinatown Neighborhood Center,True,high,129418.0,False,False,"Identical organization name, only Inc designation difference"
+Boston Chinatown Neighborhood Center Inc,Boston Chinatown Neighborhood Center,True,high,1805531.88,True,False,"Identical organization name, only Inc designation difference"
+Brand Company,Brand Company,True,medium,8147.49,False,False,Same company name; Inc designation likely reflects formal incorporation status
+"Brand Company, Inc",Brand Company,True,medium,21180.26,True,False,Same company name; Inc designation likely reflects formal incorporation status
+CAFE JUICEUP,CAFE JUICEUP,True,high,10400.0,False,False,"Identical company name, only casing difference"
+Cafe Juiceup,CAFE JUICEUP,True,high,357.5,True,False,"Identical company name, only casing difference"
+CDW Government LLC,CDW Government LLC,False,high,581148.19,False,True,Different legal entity types (LLC vs Inc) indicate separate registrations or restructuring
+"CDW Government, Inc",CDW Government LLC,False,high,102475.2,False,True,Different legal entity types (LLC vs Inc) indicate separate registrations or restructuring
+Chica Project,Chica Project,True,high,4000.0,False,False,"Identical company name, only casing difference"
+chica project,Chica Project,True,high,20000.0,True,False,"Identical company name, only casing difference"
+Chinatown Main Street,"Chinatown Main Street, Inc.",True,high,31500.0,True,False,Same organization name with only Inc. suffix added; standard incorporation designation
+"Chinatown Main Street, Inc.","Chinatown Main Street, Inc.",True,high,221544.47,False,False,Same organization name with only Inc. suffix added; standard incorporation designation
+Dodge Grain Co. Inc.,Dodge Grain Co. Inc.,False,high,6310.23,False,True,"Different legal entity types (Inc. vs LLC); could be separate entities or restructuring, but conservative approach requires treating as different"
+Dodge Grain LLC,Dodge Grain Co. Inc.,False,high,36847.12,False,True,"Different legal entity types (Inc. vs LLC); could be separate entities or restructuring, but conservative approach requires treating as different"
+Flynt Nicole N,"Flynt, Nicole N",True,high,4500.0,True,False,Same person name with only punctuation variation (comma formatting)
+"Flynt, Nicole N","Flynt, Nicole N",True,high,4200.0,False,False,Same person name with only punctuation variation (comma formatting)
+Friends of Memorial Hall,"Friends of Memorial Hall, Inc.",True,high,9999.0,True,False,Same organization name with only Inc. suffix added; standard incorporation designation
+"Friends of Memorial Hall, Inc.","Friends of Memorial Hall, Inc.",True,high,200000.0,False,False,Same organization name with only Inc. suffix added; standard incorporation designation
+Imagine Learning LLC,Imagine Learning LLC,False,high,1492053.1,False,True,"Different legal entity types (LLC vs Inc.); could indicate separate entities or restructuring, conservative approach requires treating as different"
+"Imagine Learning, Inc.",Imagine Learning LLC,False,high,107379.1,False,True,"Different legal entity types (LLC vs Inc.); could indicate separate entities or restructuring, conservative approach requires treating as different"
+James G Grant Co inc,James G. Grant Co. Inc.,True,high,8000.0,True,False,Same company name with only punctuation and spacing standardization (periods added)
+James G. Grant Co. Inc.,James G. Grant Co. Inc.,True,high,17094.0,False,False,Same company name with only punctuation and spacing standardization (periods added)
+Joachim Maxime,"Joachim, Maxime",True,high,6150.0,True,False,Same person name with only punctuation variation (comma formatting)
+"Joachim, Maxime","Joachim, Maxime",True,high,1050.0,False,False,Same person name with only punctuation variation (comma formatting)
+Language Connections,Language Connections Inc,True,high,41827.45,True,False,Same organization name with only Inc. suffix added; standard incorporation designation
+Language Connections Inc,Language Connections Inc,True,high,278013.94,False,False,Same organization name with only Inc. suffix added; standard incorporation designation
+Lozada Jennifer Y,"Lozada, Jennifer Y",True,high,250.0,True,False,Same person name with only punctuation variation (comma formatting)
+"Lozada, Jennifer Y","Lozada, Jennifer Y",True,high,250.0,False,False,Same person name with only punctuation variation (comma formatting)
+Massachusetts Reading Association,Massachusetts Reading Association Inc,True,high,1948.0,True,False,Same organization name with only Inc. suffix added; standard incorporation designation
+Massachusetts Reading Association Inc,Massachusetts Reading Association Inc,True,high,891.0,False,False,Same organization name with only Inc. suffix added; standard incorporation designation
+NSTAR Electric & Gas,NSTAR Electric & Gas,True,high,800.0,False,False,Same company name with only ampersand punctuation variation; minor formatting difference
+NSTAR Electric Gas,NSTAR Electric & Gas,True,high,1829.16,True,False,Same company name with only ampersand punctuation variation; minor formatting difference
+PIXWORX LLC,PIXWORX LLC,True,high,7515.0,False,False,Same company name with only casing variation (PIXWORX vs Pixworx)
+Pixworx LLC,PIXWORX LLC,True,high,3000.0,True,False,Same company name with only casing variation (PIXWORX vs Pixworx)
+PUTINWORK,PUTINWORK,False,medium,6500.0,False,True,"One name lacks LLC designation; could be same entity with added incorporation, but conservative approach treats as potentially different entities"
+Putinwork LLC,PUTINWORK,False,medium,5000.0,False,True,"One name lacks LLC designation; could be same entity with added incorporation, but conservative approach treats as potentially different entities"
+Performance Plumbing & Heating Inc,Performance Plumbing & Heating Inc.,True,high,458195.14,True,False,Same company name with only period punctuation variation after Inc.
+Performance Plumbing & Heating Inc.,Performance Plumbing & Heating Inc.,True,high,114747.52,False,False,Same company name with only period punctuation variation after Inc.
+Peterson Charles T,"Peterson, Charles T",True,high,240.0,True,False,Same person name with only punctuation variation (comma formatting)
+"Peterson, Charles T","Peterson, Charles T",True,high,339.5,False,False,Same person name with only punctuation variation (comma formatting)
+Plaza Deli,Plaza Deli Inc.,True,high,1179.6,True,False,Identical name with only punctuation/entity type variation (Inc. vs none)
+Plaza Deli Inc.,Plaza Deli Inc.,True,high,579.88,False,False,Identical name with only punctuation/entity type variation (Inc. vs none)
+Rapport International,"Rapport International, LLC",True,high,23951.0,True,False,Identical name with only entity type variation (LLC vs none)
+"Rapport International, LLC","Rapport International, LLC",True,high,93231.0,False,False,Identical name with only entity type variation (LLC vs none)
+"Renaissance Learning Inc, ",Renaissance Learning Inc.,True,high,6363.0,True,False,Identical name with only trailing space and punctuation variation
+Renaissance Learning Inc.,Renaissance Learning Inc.,True,high,344129.28,False,False,Identical name with only trailing space and punctuation variation
+SASAKI Associates Inc.,SASAKI Associates Inc.,False,high,287983.0,False,True,Different entity types (Inc. vs PC) suggest different legal structures; PC typically indicates professional corporation
+"Sasaki Associates, PC",SASAKI Associates Inc.,False,high,2950120.52,False,True,Different entity types (Inc. vs PC) suggest different legal structures; PC typically indicates professional corporation
+SCHOOL SPECIALTY LLC,SCHOOL SPECIALTY LLC,False,medium,547534.39,False,True,Different entity types (LLC vs Inc.) could indicate different entities or restructuring; conservative approach flags as different
+"School Specialty, Inc.",SCHOOL SPECIALTY LLC,False,medium,4051.18,False,True,Different entity types (LLC vs Inc.) could indicate different entities or restructuring; conservative approach flags as different
+SIDE Presents,SIDE Presents,True,high,25000.0,False,False,Identical name with only punctuation variation (comma placement)
+"SIDE, Presents",SIDE Presents,True,high,80000.0,True,False,Identical name with only punctuation variation (comma placement)
+Security Information Systems Inc.,Security Information Systems Inc.,False,medium,17570.0,False,True,Different entity types (Inc. vs LLC) could indicate different entities or restructuring; conservative approach flags as different
+Security Information Systems LLC,Security Information Systems Inc.,False,medium,2040.0,False,True,Different entity types (Inc. vs LLC) could indicate different entities or restructuring; conservative approach flags as different
+SmartPass Inc,SmartPass Inc,False,medium,7414.19,False,True,Different entity types (Inc vs LLC) could indicate different entities or restructuring; conservative approach flags as different
+"SmartPass, LLC",SmartPass Inc,False,medium,8574.88,False,True,Different entity types (Inc vs LLC) could indicate different entities or restructuring; conservative approach flags as different
+"Soliant Health, Inc.","Soliant Health, Inc.",False,medium,218909.39,False,True,Different entity types (Inc. vs LLC) could indicate different entities or restructuring; conservative approach flags as different
+"Soliant Health, LLC","Soliant Health, Inc.",False,medium,71561.37,False,True,Different entity types (Inc. vs LLC) could indicate different entities or restructuring; conservative approach flags as different
+Suya Joint Inc,Suya Joint Inc,False,medium,19622.58,False,True,Different entity types (Inc vs LLC) could indicate different entities or restructuring; conservative approach flags as different
+Suya Joint LLC,Suya Joint Inc,False,medium,4425.0,False,True,Different entity types (Inc vs LLC) could indicate different entities or restructuring; conservative approach flags as different
+TODISCO SERVICES INC.,TODISCO SERVICES INC.,True,high,391.45,False,False,Identical name with only casing and punctuation variation
+"Todisco Services, Inc",TODISCO SERVICES INC.,True,high,2523.52,True,False,Identical name with only casing and punctuation variation
+The Warren Group Inc,The Warren Group Inc,False,medium,8200.0,False,True,Different entity types (Inc vs LLC) could indicate different entities or restructuring; conservative approach flags as different
+The Warren Group LLC,The Warren Group Inc,False,medium,699.0,False,True,Different entity types (Inc vs LLC) could indicate different entities or restructuring; conservative approach flags as different
+Turf Products,Turf Products LLC,True,high,123283.17,True,False,Identical name with only entity type variation (LLC vs none)
+Turf Products LLC,Turf Products LLC,True,high,10676.78,False,False,Identical name with only entity type variation (LLC vs none)
+United Construction & Forestry,United Construction & Forestry LLC,True,high,4965.58,True,False,Identical name with only entity type variation (LLC vs none)
+United Construction & Forestry LLC,United Construction & Forestry LLC,True,high,6227.2,False,False,Identical name with only entity type variation (LLC vs none)
+United Rentals,"United Rentals, Inc.",True,high,25355.49,True,False,Identical name with only entity type variation (Inc. vs none)
+"United Rentals, Inc.","United Rentals, Inc.",True,high,2310.25,False,False,Identical name with only entity type variation (Inc. vs none)
+Urciuoli Dolores L,"Urciuoli, Dolores L",True,high,72.0,True,False,"Same person, only punctuation difference (comma placement)"
+"Urciuoli, Dolores L","Urciuoli, Dolores L",True,high,36.0,False,False,"Same person, only punctuation difference (comma placement)"
+"Victor Stanley, Inc.","Victor Stanley, Inc.",False,high,84169.0,False,True,"Different legal entity types (Inc vs LLC) suggest different registrations, likely same company but different entities"
+"Victor Stanley, LLC","Victor Stanley, Inc.",False,high,39493.75,False,True,"Different legal entity types (Inc vs LLC) suggest different registrations, likely same company but different entities"
+Voehl Kristen,"Voehl, Kristen",True,high,1440.0,True,False,"Same person, only punctuation difference (comma placement)"
+"Voehl, Kristen","Voehl, Kristen",True,high,480.0,False,False,"Same person, only punctuation difference (comma placement)"
+"White, Kyle","White, Kyle",True,high,2102.5,False,False,"Same person, only casing difference"
+"white, kyle","White, Kyle",True,high,108.0,True,False,"Same person, only casing difference"
+YMCA Of Greater Boston,YMCA Of Greater Boston,True,high,19999.98,False,False,"Same organization, only capitalization difference in 'Of/of'"
+YMCA of Greater Boston,YMCA Of Greater Boston,True,high,4665318.25,True,False,"Same organization, only capitalization difference in 'Of/of'"
+Zones LLC,Zones LLC,False,high,1386678.1,False,True,Different legal entity types (LLC vs Inc) suggest different registrations
+"Zones, Inc.",Zones LLC,False,high,3814.0,False,True,Different legal entity types (LLC vs Inc) suggest different registrations
+Archipelago Strategies Group Inc,Archipelago Strategies Group Inc,False,medium,201672.03,False,True,Different legal entity types (Inc vs LLC) and one includes acronym; could be restructuring but conservative approach flags as different
+"Archipelago Strategies Group, LLC (ASG)",Archipelago Strategies Group Inc,False,medium,328000.0,False,True,Different legal entity types (Inc vs LLC) and one includes acronym; could be restructuring but conservative approach flags as different
+"Ferreira, Alison","Ferreira, Alison",False,high,4050.0,False,True,Different first names (Alison vs Ailson); likely typo but cannot confirm same person
+"ferreira, ailson","Ferreira, Alison",False,high,2475.0,False,True,Different first names (Alison vs Ailson); likely typo but cannot confirm same person
+"Intra Systems, LLC","Intra Systems, LLC",False,medium,220161.5,False,True,Different legal entity types (LLC vs Inc) and spacing difference (Intra Systems vs IntraSystems); likely same company but different registrations
+"IntraSystems, Inc.","Intra Systems, LLC",False,medium,454721.2,False,True,Different legal entity types (LLC vs Inc) and spacing difference (Intra Systems vs IntraSystems); likely same company but different registrations
+John F. Kennedy Family Service Center,John F. Kennedy Family Service Center,True,high,11979.96,False,False,"Same organization, abbreviations and legal entity type added in second version"
+"John F. Kennedy Family Srvs. Center, Inc",John F. Kennedy Family Service Center,True,high,713869.58,True,False,"Same organization, abbreviations and legal entity type added in second version"
+National Community Development Assoc,National Community Development Assoc,True,high,225.0,False,False,"Same organization, second name appears to be truncated version of 'Association'"
+National Community Development Associati,National Community Development Assoc,True,high,6151.25,True,False,"Same organization, second name appears to be truncated version of 'Association'"
+OFF DUTY MANAGMENT,Off Duty Management,True,high,1009.0,True,False,"Same company, only casing and spacing difference"
+Off Duty Management,Off Duty Management,True,high,11348.5,False,False,"Same company, only casing and spacing difference"
+"Panteja, Goria J.","Panteja, Goria J.",False,high,400.0,False,True,Different last names (Panteja vs Pantoja); likely typo but cannot confirm same person
+"Pantoja, Goria J.","Panteja, Goria J.",False,high,400.0,False,True,Different last names (Panteja vs Pantoja); likely typo but cannot confirm same person
+S G Harold Plumbing & Heating,S G Harold Plumbing & Heating,True,medium,3727.2,False,False,Same business with expanded services and legal entity type in second version; conservative medium confidence due to service expansion
+"S.G. Harold Plumbing, Heating & AC, LLC",S G Harold Plumbing & Heating,True,medium,74489.67,True,False,Same business with expanded services and legal entity type in second version; conservative medium confidence due to service expansion
+Standard Electric (a Division of USESI),Standard Electric (a Division of USESI),True,high,41679.47,False,False,"Same company, only abbreviation and punctuation differences"
+"Standard Electric, (a Div. of USESI)",Standard Electric (a Division of USESI),True,high,75190.47,True,False,"Same company, only abbreviation and punctuation differences"
+"Tremblay, Gregory","Tremblay, Gregory",True,high,194.0,False,False,Same person with middle initial added in second entry. Standard name variation.
+"Tremblay, Gregory F.","Tremblay, Gregory",True,high,194.0,True,False,Same person with middle initial added in second entry. Standard name variation.
+"Williams, James","Williams, James",False,high,420.0,False,True,"James and Jamie are distinct names, not standard abbreviations of each other. Likely different individuals."
+"Williams, Jamie","Williams, James",False,high,3500.0,False,True,"James and Jamie are distinct names, not standard abbreviations of each other. Likely different individuals."
