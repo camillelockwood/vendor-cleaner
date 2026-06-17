@@ -16,35 +16,42 @@ The design idea (this is the part that shows judgment):
   - Low-confidence decisions are NOT applied automatically — they're flagged
     for a human to approve. You never let the model silently overwrite records.
 
+Reliability choices:
+  - Claude is called with temperature=0 so runs are reproducible.
+  - Claude's chosen name is validated against the group (no invented names).
+  - The API call retries on transient errors.
+  - Overlapping candidate groups are merged so no vendor is judged twice.
+
 Outputs
 -------
   1. <input>_cleaned.csv      original data + a new "Vendor Name Canonical" column
   2. <input>_change_log.csv   every proposed merge, with Claude's reasoning,
-                              confidence, and whether it was applied or needs review
+                              confidence, total spend for that name, and whether
+                              it was applied or needs review
 
 Run it
 ------
-  # 1) See it work with NO API key (rule-based grouping only):
+  # See it work with NO API key (rule-based grouping only):
   python clean_vendors.py checkbook_explorer_fy25_updated.csv --no-llm
 
-  # 2) Full version (needs an Anthropic API key):
+  # Full version (needs an Anthropic API key). Add --eval to also write an
+  # accuracy sample from THIS SAME run:
   export ANTHROPIC_API_KEY=sk-...
-  python clean_vendors.py checkbook_explorer_fy25_updated.csv
-
-  # Optional: build a small eval sample to hand-check accuracy
   python clean_vendors.py checkbook_explorer_fy25_updated.csv --eval 50
 """
 
 import argparse
 import csv
 import json
+import random
 import re
 import sys
+import time
 from collections import defaultdict
 from difflib import SequenceMatcher
 
 VENDOR_COL = "Vendor Name"          # the messy column we clean
-AMOUNT_COL = "Monetary Amount"      # used only for context in the report
+AMOUNT_COL = "Monetary Amount"      # summed per vendor to show the $ impact of duplicates
 MODEL = "claude-haiku-4-5-20251001" # cheap + fast; swap to a Sonnet model for tougher cases
 
 
@@ -77,45 +84,102 @@ def similar(a: str, b: str) -> float:
     return SequenceMatcher(None, a, b).ratio()
 
 
+def parse_amount(raw: str) -> float:
+    """Turn a money string like '$1,234.56' into a float; 0.0 if unparseable."""
+    try:
+        return float(re.sub(r"[^0-9.\-]", "", raw or ""))
+    except ValueError:
+        return 0.0
+
+
 # ----------------------------------------------------------------------------
 # STEP 2 — group candidate duplicates
 # ----------------------------------------------------------------------------
+def merge_overlapping(groups):
+    """
+    Merge any groups that share a name so each vendor is judged exactly once.
+    Uses a small union-find over the names. Returns deduped groups (2+ names).
+    """
+    parent = {}
+
+    def find(x):
+        parent.setdefault(x, x)
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    def union(a, b):
+        ra, rb = find(a), find(b)
+        if ra != rb:
+            parent[ra] = rb
+
+    for g in groups:
+        for n in g[1:]:
+            union(g[0], n)
+
+    clusters = defaultdict(set)
+    for g in groups:
+        for n in g:
+            clusters[find(n)].add(n)
+    return [sorted(v) for v in clusters.values() if len(v) > 1]
+
+
 def find_candidate_groups(names):
     """
-    Return a list of groups (each a list of 2+ raw names) that MIGHT be the
-    same vendor. Two passes: (a) shared blocking key, (b) high string
-    similarity inside the same first letter, to catch typos the key misses.
+    Return groups (each a list of 2+ raw names) that MIGHT be the same vendor.
+    Two passes: (a) shared blocking key, (b) high string similarity within a
+    tight prefix block, to catch typos the key misses. Overlapping groups are
+    then merged so no name appears in more than one group.
     """
     by_key = defaultdict(set)
     for n in names:
         by_key[blocking_key(n)].add(n)
-
     groups = [sorted(v) for v in by_key.values() if len(v) > 1]
 
-    # Second pass: near-identical names that ended up under different keys.
     seen = {n for g in groups for n in g}
-    by_letter = defaultdict(list)
+    by_prefix = defaultdict(list)
     for n in names:
         if n not in seen and n:
-            by_letter[blocking_key(n)[:4]].append(n)  # tight prefix block = fast
-    for bucket in by_letter.values():
+            by_prefix[blocking_key(n)[:4]].append(n)  # tight prefix block = fast
+    for bucket in by_prefix.values():
         if len(bucket) > 60:   # skip pathological buckets to stay quick
             continue
         for i in range(len(bucket)):
             for j in range(i + 1, len(bucket)):
                 if similar(blocking_key(bucket[i]), blocking_key(bucket[j])) >= 0.92:
                     groups.append(sorted([bucket[i], bucket[j]]))
-    return groups
+
+    return merge_overlapping(groups)
 
 
 # ----------------------------------------------------------------------------
 # STEP 3 — ask Claude to judge each candidate group
 # ----------------------------------------------------------------------------
+def _call_claude(client, prompt, retries=3):
+    """Call the API with simple retry/backoff. Returns text, or None on failure."""
+    for attempt in range(retries):
+        try:
+            resp = client.messages.create(
+                model=MODEL,
+                max_tokens=2000,
+                temperature=0,            # deterministic, reproducible runs
+                messages=[{"role": "user", "content": prompt}],
+            )
+            return resp.content[0].text
+        except Exception as e:            # noqa: BLE001 - any transient API error
+            if attempt == retries - 1:
+                print(f"  ! batch failed after {retries} tries: {e}", file=sys.stderr)
+                return None
+            time.sleep(2 * (attempt + 1))
+    return None
+
+
 def ask_claude(groups, client):
     """
     Send candidate groups to Claude in small batches. For each group Claude
-    returns: are these the same entity, the best canonical name, a confidence
-    level, and one line of reasoning. Returns a list of decision dicts.
+    returns: same_entity, the best canonical name, a confidence level, and a
+    short reason. Returns a list of decision dicts.
     """
     decisions = []
     BATCH = 15
@@ -126,27 +190,30 @@ def ask_claude(groups, client):
             "You are cleaning a list of government vendor names. Some names below "
             "refer to the SAME real-world vendor entered inconsistently (punctuation, "
             "abbreviations, LLC vs Inc, typos, casing). For each group decide if ALL "
-            "the names are the same vendor. Pick the single clearest, most complete "
-            "canonical name. Be conservative: if a group mixes genuinely different "
-            "vendors, set same_entity to false.\n\n"
+            "the names are the same vendor. For canonical_name, choose EXACTLY ONE of "
+            "the names shown in that group (do not invent a new name). Be conservative: "
+            "if a group mixes genuinely different vendors, set same_entity to false.\n\n"
             "Return ONLY a JSON array, one object per group, with keys: "
             "group_id (int), same_entity (bool), canonical_name (string), "
             "confidence ('high'|'medium'|'low'), reasoning (short string).\n\n"
             f"Groups:\n{json.dumps(payload, indent=2)}"
         )
-        resp = client.messages.create(
-            model=MODEL,
-            max_tokens=2000,
-            messages=[{"role": "user", "content": prompt}],
-        )
-        text = resp.content[0].text
-        # be forgiving about extra prose around the JSON
-        match = re.search(r"\[.*\]", text, re.DOTALL)
+        text = _call_claude(client, prompt)
+        if text is None:
+            continue
+        match = re.search(r"\[.*\]", text, re.DOTALL)  # forgive prose around the JSON
         if not match:
             print("  ! could not parse a batch; skipping it", file=sys.stderr)
             continue
-        for d in json.loads(match.group(0)):
-            gid = d["group_id"]
+        try:
+            parsed = json.loads(match.group(0))
+        except json.JSONDecodeError:
+            print("  ! invalid JSON in a batch; skipping it", file=sys.stderr)
+            continue
+        for d in parsed:
+            gid = d.get("group_id")
+            if not isinstance(gid, int) or not (0 <= gid < len(groups)):
+                continue
             d["names"] = groups[gid]
             decisions.append(d)
     return decisions
@@ -155,20 +222,34 @@ def ask_claude(groups, client):
 def rule_only_decisions(groups):
     """Fallback for --no-llm: propose the longest name as canonical, but mark
     everything 'needs review' since no model judged it."""
-    out = []
-    for i, g in enumerate(groups):
-        out.append({
-            "group_id": i, "names": g, "same_entity": True,
-            "canonical_name": max(g, key=len),
-            "confidence": "low",
-            "reasoning": "rule-based grouping only (no LLM); needs human review",
-        })
-    return out
+    return [{
+        "group_id": i, "names": g, "same_entity": True,
+        "canonical_name": max(g, key=len),
+        "confidence": "low",
+        "reasoning": "rule-based grouping only (no LLM); needs human review",
+    } for i, g in enumerate(groups)]
 
 
 # ----------------------------------------------------------------------------
 # STEP 4 — apply decisions + write outputs
 # ----------------------------------------------------------------------------
+def decide(d):
+    """
+    Turn one raw model decision into (canonical_name, apply_group).
+    Validates the canonical name is actually one of the group's names — if not,
+    we fall back to a safe choice and force human review (no invented names).
+    """
+    group_names = d["names"]
+    same = bool(d.get("same_entity", False))
+    conf = d.get("confidence", "low")
+    cname = (d.get("canonical_name") or "").strip()
+    valid = cname in group_names
+    if not valid:
+        cname = max(group_names, key=len)        # safe fallback
+    apply_group = same and valid and conf in ("high", "medium")
+    return cname, apply_group
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("csv_path")
@@ -181,13 +262,17 @@ def main():
     # Load
     with open(args.csv_path, encoding="utf-8-sig") as f:
         rows = list(csv.DictReader(f))
+    if not rows:
+        sys.exit("The CSV appears to be empty.")
     if VENDOR_COL not in rows[0]:
         sys.exit(f"Column '{VENDOR_COL}' not found. Columns: {list(rows[0])}")
     print(f"Loaded {len(rows):,} rows")
 
-    # Deterministic clean + gather unique names
+    # Deterministic clean + total spend per name (this is where AMOUNT_COL earns its keep)
+    spend_by_name = defaultdict(float)
     for r in rows:
         r[VENDOR_COL] = basic_clean(r[VENDOR_COL])
+        spend_by_name[r[VENDOR_COL]] += parse_amount(r.get(AMOUNT_COL, ""))
     names = sorted({r[VENDOR_COL] for r in rows if r[VENDOR_COL]})
     print(f"{len(names):,} unique vendor names after basic cleanup")
 
@@ -210,23 +295,21 @@ def main():
         decisions = ask_claude(groups, client)
 
     # Build name -> canonical map. Apply only confident, same-entity merges.
-    canonical = {}
-    log = []
+    canonical, log = {}, []
     for d in decisions:
-        same = d.get("same_entity", False)
-        conf = d.get("confidence", "low")
-        apply = bool(same) and conf in ("high", "medium")
-        needs_review = (not apply)
+        cname, apply_group = decide(d)
         for n in d["names"]:
-            if apply and n != d["canonical_name"]:
-                canonical[n] = d["canonical_name"]
+            applied = apply_group and n != cname
+            if applied:
+                canonical[n] = cname
             log.append({
                 "original_name": n,
-                "canonical_name": d.get("canonical_name", ""),
-                "same_entity": same,
-                "confidence": conf,
-                "applied": apply and n != d["canonical_name"],
-                "needs_review": needs_review,
+                "canonical_name": cname,
+                "same_entity": bool(d.get("same_entity", False)),
+                "confidence": d.get("confidence", "low"),
+                "vendor_total_spend": round(spend_by_name.get(n, 0.0), 2),
+                "applied": applied,
+                "needs_review": not apply_group,
                 "reasoning": d.get("reasoning", ""),
             })
 
@@ -249,16 +332,16 @@ def main():
         w.writerows(log)
 
     applied = sum(1 for x in log if x["applied"])
-    review = len({x["canonical_name"] for x in log if x["needs_review"]})
+    review = sum(1 for d in decisions if not decide(d)[1])
     print(f"\nDone.")
     print(f"  merges applied:        {applied}")
     print(f"  groups needing review: {review}")
     print(f"  -> {cleaned_path}")
     print(f"  -> {log_path}")
 
-    # Optional eval sample
+    # Optional eval sample (from THIS run; seeded so it's reproducible)
     if args.eval:
-        import random
+        random.seed(0)
         applied_rows = [x for x in log if x["applied"]]
         sample = random.sample(applied_rows, min(args.eval, len(applied_rows)))
         eval_path = base + "_eval_sample.csv"

@@ -1,4 +1,4 @@
-# Vendor Name Cleaner
+# 🧹 Vendor Name Cleaner
 
 **A Python tool that finds and standardizes duplicate vendor names in messy
 financial spreadsheets — using rule-based logic for the easy calls and Claude
@@ -45,6 +45,12 @@ Anthropic SDK is an external dependency):
   parses structured JSON back, instead of one slow call per name
 - **`argparse`** — a real CLI with `--no-llm` (runs with zero API key) and
   `--eval` (builds an accuracy sample) flags
+- **reproducibility & guardrails** — Claude is called with `temperature=0` so
+  runs are repeatable; its chosen name is validated against the group (no
+  invented names); the API call retries on transient errors; and overlapping
+  candidate groups are merged so no vendor is judged twice
+- **tested** — `test_clean_vendors.py` covers the deterministic logic (run it
+  with `python test_clean_vendors.py`, no API key needed)
 
 ## Quickstart
 
@@ -66,7 +72,9 @@ python clean_vendors.py checkbook_explorer_fy25_updated.csv --eval 50
 
 - **`..._cleaned.csv`** — original data + a new `Vendor Name Canonical` column
 - **`..._change_log.csv`** — every proposed merge with Claude's confidence,
-  one-line reasoning, and whether it was applied or flagged for review
+  one-line reasoning, the total spend tied to that name (so you can see the
+  dollar value fragmented across duplicates), and whether it was applied or
+  flagged for review
 
 ## Example run
 
