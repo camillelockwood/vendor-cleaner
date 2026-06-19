@@ -122,7 +122,7 @@ record until merged.
 
 - Only catches duplicates the grouping step puts together; wildly different
   spellings of one vendor can still slip through.
-- "Same vendor" is sometimes genuinely ambiguous (subsidiaries, `dba` names),
+- "Same vendor" is sometimes ambiguous (subsidiaries, `dba` names),
   which is exactly why low-confidence calls are flagged, not auto-applied.
 - Uses public, non-sensitive city data on purpose; real customer/donor records
   contain personal info that shouldn't be sent to an API without care.
