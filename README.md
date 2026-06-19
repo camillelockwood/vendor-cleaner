@@ -10,7 +10,7 @@ financial spreadsheets — using rule-based logic for the easy calls and Claude
 
 ---
 
-## The problem
+## The Problem
 
 Real spreadsheets are messy. The same vendor shows up as `Dennis K. Burke, Inc.`,
 `Dennis K Burke Inc`, and `DENNIS K. BURKE`. To a human they're obviously one
@@ -18,7 +18,7 @@ vendor; to a spreadsheet they're three — so totals, reports, and budgets are
 quietly wrong. Cleaning this by hand across thousands of rows is a half-day job
 no one wants.
 
-## The approach
+## The Approach
 
 I split the work by what each tool is actually good at:
 
@@ -29,10 +29,9 @@ I split the work by what each tool is actually good at:
 | Decide "same vendor?" + pick best name | **Claude** | Genuine fuzzy judgment |
 | Apply only confident merges; flag the rest | **Python + a confidence gate** | A human approves uncertain calls — the model never silently overwrites financial records |
 
-That last row is the point: **knowing when *not* to fully automate** is the
-difference between a careless script and a tool you'd trust near real data.
+Letting plain logic handle the certain cases and a human handle the uncertain ones, is what makes a tool like this safe to run on real financial data.
 
-## What the Python actually does
+## What The Python Actually Does
 
 This is a from-scratch data pipeline in standard-library Python (only the
 Anthropic SDK is an external dependency):
@@ -76,7 +75,7 @@ python clean_vendors.py checkbook_explorer_fy25_updated.csv --eval 50
   dollar value fragmented across duplicates), and whether it was applied or
   flagged for review
 
-## Example run
+## Example Run
 
 ```text
 $ python clean_vendors.py checkbook_explorer_fy25_updated.csv
@@ -102,7 +101,7 @@ A few real merges it made on the Boston data:
 | `Language Connections` | `Language Connections Inc.` |
 | `S G Harold Plumbing & Heating` | `S.G. Harold Plumbing & Heating` |
 
-## Results & evaluation
+## Results & Evaluation
 
 Run on the City of Boston FY25 Checkbook (117,898 rows, 7,643 unique vendor
 names), with `temperature=0` so the run is reproducible:
@@ -112,9 +111,8 @@ names), with `temperature=0` so the run is reproducible:
 - Flagged for human review: **21**
 - Hand-checked **all 41** applied merges: **41/41 correctly identified as the
   same vendor.** In ~6 cases the canonical name it chose was a messier existing
-  variant (e.g. ALL CAPS or missing punctuation) rather than the cleanest option
-  — a deliberate tradeoff of requiring the canonical name to be one that actually
-  appears in the data, never an invented one.
+  variant (e.g. ALL CAPS or missing punctuation) rather than the cleanest option. 
+  That was an intentional tradeoff chosen on purpose: the canonical name always has to be one that already appears in the data, so the cool can't invent a name. 
 - This measures *precision* on flagged candidates, not *recall* — duplicates the
   grouping step never surfaces aren't tested here.
 
