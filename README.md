@@ -11,7 +11,7 @@ financial spreadsheets, using rule-based logic for the easy calls and Claude, an
 
 ## The Problem
 
-The same vendor shows up as `Dennis K. Burke, Inc.`,`Dennis K Burke Inc`, and `DENNIS K. BURKE`. To a human they're one vendor; to a spreadsheet they're three, resulting in incorrect or unaccounted for totals, reports, and budgets.
+The same vendor shows up as `Dennis K. Burke, Inc.`,`Dennis K Burke Inc`, and `DENNIS K. BURKE`. To a human they're one vendor; to a spreadsheet they're three. This can result in incorrect or unaccounted for totals, reports, and budgets.
 Manually cleaning and organizing spreadsheets can be slow and costly. For small or under-resourced teams, those hours come straight out of their mission. 
 
 ## The Approach
