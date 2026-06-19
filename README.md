@@ -5,7 +5,7 @@ financial spreadsheets — using rule-based logic for the easy calls and Claude
 (an LLM) for the judgment calls.**
 
 > Tested on the City of Boston FY25 Checkbook: **117,898 rows / 7,643 unique
-> vendor names → 60+ duplicate vendor groups surfaced** that otherwise split a
+> vendor names → 62 duplicate vendor groups surfaced** that otherwise split a
 > single vendor's spending across several spellings.
 
 ---
