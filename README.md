@@ -14,6 +14,10 @@ financial spreadsheets, using rule-based logic for the easy calls and Claude, an
 The same vendor shows up as `Dennis K. Burke, Inc.`,`Dennis K Burke Inc`, and `DENNIS K. BURKE`. To a human they're one vendor; to a spreadsheet they're three. This can result in incorrect or unaccounted for totals, reports, and budgets.
 Manually cleaning and organizing spreadsheets can be slow and costly. For small or under-resourced teams, those hours come straight out of their mission. 
 
+## Why This Matters
+Duplicte vendor names can distort any organiztions view of its own funds. When one vendor is recorded several ways, budgets, reports, and audits rest on numbers that are wrong, and the usual fix is paying someone to reconcile thousands of rows by hand.
+On Boston's data, one vendor's spending was split across spellings totaling about $4.7M, disconnected from its record until it was merged. For a small or under-resourced team, a tool that fixes this problem without significant use of resources, gives back both accurate numbers and the staff time to spend on the work that actually matters.
+
 ## The Approach
 
 I split the work by what each tool is actually good at:
