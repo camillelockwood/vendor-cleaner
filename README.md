@@ -16,6 +16,7 @@ Manually cleaning and organizing spreadsheets can be slow and costly. For small 
 
 ## Why This Matters
 Duplicte vendor names can distort any organiztions view of its own funds. When one vendor is recorded several ways, budgets, reports, and audits rest on numbers that are wrong, and the usual fix is paying someone to reconcile thousands of rows by hand.
+
 On Boston's data, one vendor's spending was split across spellings totaling about $4.7M, disconnected from its record until it was merged. For a small or under-resourced team, a tool that fixes this problem without significant use of resources, gives back both accurate numbers and the staff time to spend on the work that actually matters.
 
 ## The Approach
