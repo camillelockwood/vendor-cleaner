@@ -118,7 +118,7 @@ Greater Boston" alone carried ~$4.7M, a "Boston Chinatown Neighborhood Center"
 variant ~$1.8M, and "Aramsco" ~$1.24M — all disconnected from the main vendor
 record until merged.
 
-## Honest limitations
+## Honest Limitations
 
 - Only catches duplicates the grouping step puts together; wildly different
   spellings of one vendor can still slip through.
