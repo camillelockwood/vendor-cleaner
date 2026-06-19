@@ -1,6 +1,6 @@
 # Vendor Name Cleaner
 
-**A Python tool that finds and standardizes duplicate vendor names in unorganized and difficult to grasp
+**A Python tool that finds and standardizes duplicate vendor names in disorganized
 financial spreadsheets, using rule-based logic for the easy calls and Claude, an LLM, for the judgment calls.**
 
 > Tested on the City of Boston FY25 Checkbook: **117,898 rows / 7,643 unique
@@ -15,7 +15,7 @@ The same vendor shows up as `Dennis K. Burke, Inc.`,`Dennis K Burke Inc`, and `D
 Manually cleaning and organizing spreadsheets can be slow and costly. For small or under-resourced teams, those hours come straight out of their mission. 
 
 ## Why This Matters
-Duplicte vendor names can distort any organiztions view of its own funds. When one vendor is recorded several ways, budgets, reports, and audits rest on numbers that are wrong, and the usual fix is paying someone to reconcile thousands of rows by hand.
+Duplicate vendor names can distort any organizations view of its own funds. When one vendor is recorded several ways, budgets, reports, and audits rest on numbers that are wrong, and the usual fix is paying someone to reconcile thousands of rows by hand.
 
 On Boston's data, one vendor's spending was split across spellings totaling about $4.7M, disconnected from its record until it was merged. For a small or under-resourced team, a tool that fixes this problem without significant use of resources, gives back both accurate numbers and the staff time to spend on the work that actually matters.
 
@@ -30,7 +30,7 @@ I split the work by what each tool is actually good at:
 | Decide "same vendor?" + pick best name | **Claude** | Genuine fuzzy judgment |
 | Apply only confident merges; flag the rest | **Python + a confidence gate** | A human approves uncertain calls — the model never silently overwrites financial records |
 
-Letting plain logic handle the certain cases and a human handle the uncertain ones, is what makes a tool like this safe to run on real financial data.
+Letting plain logic handle the certain cases and a human handle the uncertain ones is what makes a tool like this safe to run on real financial data.
 
 ## What The Python Actually Does
 
@@ -113,15 +113,9 @@ names), with `temperature=0` so the run is reproducible:
 - Hand-checked **all 41** applied merges: **41/41 correctly identified as the
   same vendor.** In ~6 cases the canonical name it chose was a messier existing
   variant (e.g. ALL CAPS or missing punctuation) rather than the cleanest option. 
-  That was an intentional tradeoff chosen on purpose: the canonical name always has to be one that already appears in the data, so the tool can't invent a name. 
+  That was an intentional tradeoff: the canonical name always has to be one that already appears in the data, so the tool can't invent a name. 
 - This measures *precision* on flagged candidates, not *recall*. Duplicates that the
   grouping step never surfaces are not tested here.
-
-**What the duplicates were hiding:** because the change log totals spend per name,
-it surfaced real money fragmented across spellings — one variant of "YMCA of
-Greater Boston" alone carried ~$4.7M, a "Boston Chinatown Neighborhood Center"
-variant ~$1.8M, and "Aramsco" ~$1.24M — all disconnected from the main vendor
-record until merged.
 
 ## Honest Limitations
 
@@ -134,7 +128,7 @@ record until merged.
 
 ## What I'd Do Differently 
 
-- The auto-apply gate trusts Claude's self-reported high/medium/low. Large Language Models can be overconfident, so I'd back that with a more objective signal, like string-distance thresholds, or only auto-applying when the rule-based groupings and the model agree, opposed to taking the models word for how sure it is. 
+- The auto-apply gate trusts Claude's self-reported high/medium/low. Large Language Models can be overconfident, so I'd back that with a more objective signal, like string-distance thresholds, or only auto-applying when the rule-based groupings and the model agree, as opposed to taking the models word for how sure it is. 
 - Right now, human review means reading a flagged CSV. If I were building it for a real non-technical staffer, I'd have designed the review step as an actual approve/reject interface from the start, instead of leaving it as a spreadsheet column.  
 
 ---
