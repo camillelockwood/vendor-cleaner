@@ -1,8 +1,7 @@
 # Vendor Name Cleaner
 
-**A Python tool that finds and standardizes duplicate vendor names in messy
-financial spreadsheets — using rule-based logic for the easy calls and Claude
-(an LLM) for the judgment calls.**
+**A Python tool that finds and standardizes duplicate vendor names in unorganized and difficult to grasp
+financial spreadsheets, using rule-based logic for the easy calls and Claude, an LLM, for the judgment calls.**
 
 > Tested on the City of Boston FY25 Checkbook: **117,898 rows / 7,643 unique
 > vendor names → 62 duplicate vendor groups surfaced** that otherwise split a
@@ -12,11 +11,8 @@ financial spreadsheets — using rule-based logic for the easy calls and Claude
 
 ## The Problem
 
-Real spreadsheets are messy. The same vendor shows up as `Dennis K. Burke, Inc.`,
-`Dennis K Burke Inc`, and `DENNIS K. BURKE`. To a human they're obviously one
-vendor; to a spreadsheet they're three — so totals, reports, and budgets are
-quietly wrong. Cleaning this by hand across thousands of rows is a half-day job
-no one wants.
+The same vendor shows up as `Dennis K. Burke, Inc.`,`Dennis K Burke Inc`, and `DENNIS K. BURKE`. To a human they're obviously one vendor; to a spreadsheet they're three, resulting in incorrect or unaccounted for totals, reports, and budgets.
+Manually cleaning and organizing spreadsheets can be slow and costly. For small or under-resourced teams, those hours come straight out of their mission. 
 
 ## The Approach
 
@@ -112,9 +108,9 @@ names), with `temperature=0` so the run is reproducible:
 - Hand-checked **all 41** applied merges: **41/41 correctly identified as the
   same vendor.** In ~6 cases the canonical name it chose was a messier existing
   variant (e.g. ALL CAPS or missing punctuation) rather than the cleanest option. 
-  That was an intentional tradeoff chosen on purpose: the canonical name always has to be one that already appears in the data, so the cool can't invent a name. 
-- This measures *precision* on flagged candidates, not *recall* — duplicates the
-  grouping step never surfaces aren't tested here.
+  That was an intentional tradeoff chosen on purpose: the canonical name always has to be one that already appears in the data, so the tool can't invent a name. 
+- This measures *precision* on flagged candidates, not *recall*. Duplicates that the
+  grouping step never surfaces are not tested here.
 
 **What the duplicates were hiding:** because the change log totals spend per name,
 it surfaced real money fragmented across spellings — one variant of "YMCA of
@@ -126,16 +122,15 @@ record until merged.
 
 - Only catches duplicates the grouping step puts together; wildly different
   spellings of one vendor can still slip through.
-- "Same vendor" is sometimes genuinely ambiguous (subsidiaries, `dba` names) —
+- "Same vendor" is sometimes genuinely ambiguous (subsidiaries, `dba` names),
   which is exactly why low-confidence calls are flagged, not auto-applied.
 - Uses public, non-sensitive city data on purpose; real customer/donor records
   contain personal info that shouldn't be sent to an API without care.
 
-## What I'd build next
+## What I'd Do Differently 
 
-- Add address / vendor-ID as a second matching signal so dedup isn't name-only.
-- A one-click review screen so a non-technical staffer can approve flagged
-  merges — the piece that makes it genuinely hand-off-able.
+- The auto-apply gate trusts Claude's self-reported high/medium/low. Large Language Models can be overconfident, so I'd back that with a more objective signal, like string-distance thresholds, or only auto-applying when the rule-based groupings and the model agree, opposed to taking the models word for how sure it is. 
+- Right now, human review means reading a flagged CSV. If I were building it for a real non-technical staffer, I'd have designed the review step as an actual approve/reject interface from the start, instead of leaving it as a spreadsheet column.  
 
 ---
 
