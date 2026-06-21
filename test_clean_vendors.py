@@ -65,5 +65,25 @@ class TestDecide(unittest.TestCase):
         self.assertTrue(apply_group)
 
 
+class TestGroupObjectivelySimilar(unittest.TestCase):
+    def test_near_identical_names_pass(self):
+        # Punctuation / suffix variants should clear the similarity bar.
+        self.assertTrue(cv._group_is_objectively_similar(
+            ["Acme Inc", "Acme Inc.", "ACME INC"]))
+
+    def test_dissimilar_names_blocked(self):
+        # If model hallucinates a merge of truly different names, gate blocks it.
+        self.assertFalse(cv._group_is_objectively_similar(
+            ["Alpha Plumbing LLC", "Zenith Catering Corp"]))
+
+    def test_decide_blocks_overconfident_dissimilar_merge(self):
+        # Even high confidence from model must not auto-apply dissimilar names.
+        d = {"names": ["Alpha Plumbing LLC", "Zenith Catering Corp"],
+             "same_entity": True, "confidence": "high",
+             "canonical_name": "Alpha Plumbing LLC"}
+        _, apply_group = cv.decide(d)
+        self.assertFalse(apply_group)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

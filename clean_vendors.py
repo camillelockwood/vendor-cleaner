@@ -233,11 +233,27 @@ def rule_only_decisions(groups):
 # ----------------------------------------------------------------------------
 # STEP 4 — apply decisions + write outputs
 # ----------------------------------------------------------------------------
+def _group_is_objectively_similar(names: list) -> bool:
+    """
+    Secondary gate: confirm every pair in the group clears a string-distance bar,
+    independent of what the model says. Prevents auto-applying when Claude is
+    overconfident on names that are actually quite different.
+    """
+    for i in range(len(names)):
+        for j in range(i + 1, len(names)):
+            key_sim = similar(blocking_key(names[i]), blocking_key(names[j]))
+            raw_sim = similar(names[i].lower(), names[j].lower())
+            if key_sim < 0.70 and raw_sim < 0.60:
+                return False
+    return True
+
+
 def decide(d):
     """
     Turn one raw model decision into (canonical_name, apply_group).
-    Validates the canonical name is actually one of the group's names — if not,
-    we fall back to a safe choice and force human review (no invented names).
+    Two-signal gate: the model must say same_entity + high/medium confidence,
+    AND the names must pass an objective string-distance check. Either signal
+    alone can veto auto-apply; flagged decisions still appear in the change log.
     """
     group_names = d["names"]
     same = bool(d.get("same_entity", False))
@@ -245,9 +261,39 @@ def decide(d):
     cname = (d.get("canonical_name") or "").strip()
     valid = cname in group_names
     if not valid:
-        cname = max(group_names, key=len)        # safe fallback
-    apply_group = same and valid and conf in ("high", "medium")
+        cname = max(group_names, key=len)        # safe fallback; no invented names
+    obj_similar = _group_is_objectively_similar(group_names)
+    apply_group = same and valid and conf in ("high", "medium") and obj_similar
     return cname, apply_group
+
+
+def measure_recall(known_pairs_path: str, candidate_groups: list) -> None:
+    """
+    Report what fraction of known duplicate pairs the grouping step surfaced.
+    Pairs not found were never sent to Claude — a gap no confidence gate can fix.
+
+    known_pairs_path: CSV with columns name_a, name_b (one known-duplicate pair per row).
+    """
+    try:
+        with open(known_pairs_path, encoding="utf-8-sig") as f:
+            pairs = [(r["name_a"].strip(), r["name_b"].strip()) for r in csv.DictReader(f)]
+    except FileNotFoundError:
+        print(f"  ! recall file not found: {known_pairs_path}", file=sys.stderr)
+        return
+
+    found, missed = [], []
+    for a, b in pairs:
+        surfaced = any(a in g and b in g for g in candidate_groups)
+        (found if surfaced else missed).append((a, b))
+
+    pct = 100 * len(found) / len(pairs) if pairs else 0
+    print(f"\nRecall check ({known_pairs_path}):")
+    print(f"  Known duplicate pairs : {len(pairs)}")
+    print(f"  Surfaced by grouping  : {len(found)} ({pct:.0f}%)")
+    if missed:
+        print(f"  Missed ({len(missed)}):")
+        for a, b in missed:
+            print(f"    '{a}'  vs  '{b}'")
 
 
 def main():
@@ -257,6 +303,9 @@ def main():
                     help="skip Claude; rule-based grouping only (no API key needed)")
     ap.add_argument("--eval", type=int, default=0,
                     help="also write a random sample of N applied merges to hand-check")
+    ap.add_argument("--recall", metavar="PAIRS_CSV", default="",
+                    help="CSV of known duplicate pairs (columns: name_a, name_b) to "
+                         "measure grouping recall against")
     args = ap.parse_args()
 
     # Load
@@ -280,6 +329,10 @@ def main():
     groups = find_candidate_groups(names)
     print(f"{len(groups)} candidate duplicate groups found "
           f"(only these are sent to Claude)")
+
+    # Optional recall measurement (checks the grouping step, not the model)
+    if args.recall:
+        measure_recall(args.recall, groups)
 
     # Judge
     if args.no_llm:
